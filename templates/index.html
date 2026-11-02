@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111827"><title>ReelDrop — Save Reels</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body><main class="page">
+<nav class="nav"><a class="brand" href="/">Reel<span>Drop</span><i>•</i></a><span class="nav-note">Simple video saver</span></nav>
+<section class="hero">
+<div class="eyebrow"><span class="dot"></span> QUICK • SIMPLE • MOBILE FRIENDLY</div>
+<h1>Save the reels<br><span>you love.</span></h1>
+<p class="sub">Paste a public Instagram Reel link below. We'll prepare the video if it's publicly accessible.</p>
+<form class="download-card" action="/download" method="post">
+<label for="url">Instagram Reel link</label>
+<div class="input-row"><span class="link-icon">↗</span><input id="url" name="url" type="url" placeholder="https://www.instagram.com/reel/..." required><button type="button" class="paste-btn" id="pasteBtn">Paste</button></div>
+<button class="download-btn" type="submit"><span>↓</span> Download video</button>
+<p class="micro">Only save videos you own or have permission to download.</p>
+</form>
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}<div class="notice {{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
+</section>
+<section class="steps">
+<div><b>01</b><strong>Copy link</strong><small>Copy the link of a public Reel.</small></div>
+<div><b>02</b><strong>Paste link</strong><small>Put it in the box above.</small></div>
+<div><b>03</b><strong>Save video</strong><small>Download starts if available.</small></div>
+</section>
+<footer><p>ReelDrop is an independent project and is not affiliated with Instagram or Meta.</p><p>Private posts, login-only content, and access restrictions are not supported.</p></footer>
+</main><script src="{{ url_for('static', filename='script.js') }}"></script></body></html>
